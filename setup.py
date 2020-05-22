@@ -25,28 +25,7 @@ def bash_setup():
 def conda_setup():
     print(f'Setting up conda')
     # Test if conda is initialized properly:
-    conda_is_setup = os.environ.get('CONDA_DEFAULT_ENV', '') != ''
-    if conda_is_setup:
-        print('Conda already set up')
-        return
-
-    with open(bash_dir / '.bashrc', 'r') as bashrc_file:
-        bashrc = bashrc_file.readlines()
-
-    for line_number, line in enumerate(bashrc):
-        if line.startswith('# >>> conda initialize >>>'):
-            conda_init_start_line = line_number
-        elif line.startswith('# <<< conda initialize <<<'):
-            conda_init_end_line = line_number
-        else:
-            conda_init_start_line = None
-            conda_init_end_line = None
-
-    if conda_init_start_line:
-        del bashrc[conda_init_start_line:conda_init_end_line + 1]
-
-        with open(bash_dir / '.bashrc', 'w') as bashrc_file:
-            bashrc_file.writelines(bashrc)
+    os.system('conda init --reverse')
 
     os.system('conda init')
 
