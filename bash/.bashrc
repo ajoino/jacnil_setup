@@ -101,6 +101,10 @@ set show-all-if-ambiguous on
 set show-all-if-unmodified on
 set menu-complete-display-prefix on
 
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/jacnil/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
